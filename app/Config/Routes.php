@@ -33,7 +33,8 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('dashboard', 'App\Controllers\Dashboard::index');
+$routes->get('/', 'Dashboard::index');
+$routes->get('approach/(:any)','Services/Formula::approach/$1');
 
 /*
  * --------------------------------------------------------------------
@@ -52,3 +53,4 @@ if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php'))
 {
 	require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
 }
+

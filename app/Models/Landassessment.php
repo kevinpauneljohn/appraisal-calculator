@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class Landassessment extends Model
 {
-	protected $DBGroup              = 'default';
+//	protected $DBGroup              = 'default';
 	protected $table                = 'land_assessments';
 	protected $primaryKey           = 'id';
 	protected $useAutoIncrement     = true;
@@ -19,8 +19,8 @@ class Landassessment extends Model
 	// Dates
 	protected $useTimestamps        = true;
 	protected $dateFormat           = 'datetime';
-	protected $createdField         = 'created_at';
-	protected $updatedField         = 'updated_at';
+	protected $createdField         = 'created_date';
+	protected $updatedField         = 'updated_date';
 	protected $deletedField         = 'deleted_at';
 
 	// Validation

@@ -3,19 +3,13 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Controllers\Services\Formula;
 
 class Dashboard extends Formula
 {
 	public function index()
 	{
-		$data = [
-		    'title' => 'Dashboard',
-            'real_property_tax' => number_format($this->real_property_tax(100,500,(20/100), (2/100)), 2),
-            'area'  => $this->getArea(),
-            'unit_market_value' => $this->getUnitMarketValue(),
-            'assessment_level' => $this->getAssessmentLevel(),
-            'tax_rate' => $this->getTaxRate(),
-        ];
+		$data = $this->data();
 
 		echo view('templates/header', $data);
 		echo view('pages/dashboard', $data);
@@ -37,5 +31,20 @@ class Dashboard extends Formula
             ->setAssessmentLevel($al)
             ->setTaxRate($tr)
             ->calculate();
+    }
+
+    /**
+     * @return array
+     */
+    private function data(): array
+    {
+        return [
+            'title' => 'Dashboard',
+            'real_property_tax' => number_format($this->real_property_tax(100,500,(20/100), (2/100)), 2),
+            'area'  => $this->getArea(),
+            'unit_market_value' => $this->getUnitMarketValue(),
+            'assessment_level' => $this->getAssessmentLevel(),
+            'tax_rate' => $this->getTaxRate(),
+        ];
     }
 }
